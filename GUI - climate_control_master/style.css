@@ -1,0 +1,221 @@
+body {
+    font-family: 'Open Sans',sans-serif;
+    color:rgb(46, 45, 45);
+    margin-top:40px;
+    height:100vh;
+    background-image: linear-gradient(to bottom right, #02b3e4, #02ccba);
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top:-10px;
+    padding: 0;
+}
+
+.zone_hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top:-50px;
+    padding: 0;
+}
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.temperature {
+    display:flex;
+    justify-content: space-around;
+}
+
+.monitoring {
+    background:#fff;
+    width:40%;
+    box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+    padding:20px;
+    border-radius:15px;
+
+}
+
+.temperature-control {
+    background:#fff;
+    width:40%;
+    box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+    padding:20px;
+    border-radius:15px;
+}
+
+.input {
+    width:90%;
+    font-size:.875em;
+    overflow: hidden;
+    padding:0 1.25rem;
+    height:3rem;
+    border-radius:2px;
+    border:1px solid #dbe2e8;
+    outline:0;
+    color:#2e3d49;
+    margin-bottom:10px;
+    font-family:'Open Sans';
+    line-height:normal;
+    box-shadow:0 0.25em 0.5em 0 rgba(46,61,73,.12);
+    transition:all .3s ease, border .3s ease
+  }
+
+  input[type=text]:hover,input[type=email]:hover {
+    box-shadow: 0 0.125em 0.5em 0 rgba(46,61,73,.06);
+  }
+
+   input[type=text]:focus,input[type=email]:focus {
+    border-color:#91daee;
+    box-shadow:0 0 0.75em 0.25em rgba(145,218,238,.35);
+  }
+
+  .button {
+    width:120px;
+    background-color: #02b3e4;
+    padding:0.5rem;
+    height:3rem;
+    text-align:center;
+    text-transform:uppercase;
+    font-weight:600;
+    font-family: 'Open Sans';
+    font-size: .8125em;
+    border-radius:7px;
+    transition: all .3s ease;
+    border:none;
+    color:#fff;
+  }
+
+  .value {
+      font-size:3rem;
+      font-weight:100;
+  }
+
+  .co2_and_humidity {
+
+        display: flex;
+        justify-content: space-around;
+        margin-top:40px;
+  }
+
+  .co2 {
+    background:#fff;
+    width:40%;
+    box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .humidity {
+    background:#fff;
+    width:40%;
+    box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+    padding:20px;
+    border-radius:15px;
+  }
+
+  .pressure {
+      display:flex;
+      justify-content: space-around;
+      margin-top: 40px;
+  }
+
+  .pressure_values {
+    background:#fff;
+      width:100%;
+      box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+      padding:20px;
+      border-radius:15px;
+      text-align: center;
+  }
+
+  .room {
+      display: flex;
+      justify-content: space-around;
+      margin-top:40px;
+      margin-bottom:40px;
+  }
+
+  .room_values {
+    background:#fff;
+      margin-top:40px;
+      width:100%;
+      box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+      padding:20px;
+      font-size:2.5rem;
+      text-align: center;
+      border-radius:15px;
+
+  }
+
+  .room_temp {
+      font-weight: 200;
+  }
+
+  @media screen and (max-width:590px) {
+      .temperature {
+          flex-direction: column;
+      }
+      .monitoring {
+          width:90%;
+          margin-top:20px;
+      }
+
+      .temperature-control {
+          width:90%;
+          margin-top:20px;
+      }
+
+      .co2_and_humidity {
+          flex-direction: column;
+      }
+
+      .co2 {
+          width:90%;
+          margin-top:20px;
+      }
+
+      .humidity {
+          width:90%;
+          margin-top:20px;
+      }
+  }
+
+
+
+  .zones {
+      display:flex;
+      margin-top: 60px;
+      margin-bottom: 40px;
+      justify-content: space-around;
+  }
+
+  .zone1 {
+      background:#fff;
+      width:25%;
+      box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+      padding:20px;
+      border-radius:15px;
+  }
+
+  .zone2 {
+      background:#fff;
+      width:25%;
+      box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+      padding:20px;
+      border-radius:15px;
+  }
+
+  .zone3 {
+      background:#fff;
+      width:25%;
+      box-shadow:5px 5px 25px 0px rgba(46,61,73,0.2);
+      padding:20px;
+      border-radius:15px;
+  }
