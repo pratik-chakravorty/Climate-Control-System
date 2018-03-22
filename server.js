@@ -37,6 +37,15 @@ var monitor = require('./climateControlModules/monitor');
 var hw =  new hwController();
 var mon = new monitor();
 
+var settings = {
+  "temp_zone_0": 20,
+  "temp_zone_1": 20,
+  "temp_zone_2": 20,
+  "co2_level": 200,
+  "humidity_level": 30,
+  "pressure": 60
+}
+
 
 hw.buildHWComponentList();
 
@@ -52,6 +61,14 @@ app.route('/allReadings')
     res.send(toReturn);
   });
 
+app.route('/settings/:type')
+  .post(function(req, res){
+    var type = req.params.type;
+    var value = Number(req.query.value);
+    settings[type] = value;
+    res.send("OK");
+  });
+
 
 app.listen(port);
 
@@ -60,7 +77,7 @@ console.log('Climate Control RESTful API server started on: ' + port);
 run();
 
 function updateSystem(){
-  mon.updateHWReadings(hw.getReadings);
+  mon.updateHWReadings(hw.getReadings());
 }
 
 function run(){
