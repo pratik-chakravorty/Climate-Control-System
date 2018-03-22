@@ -41,7 +41,7 @@ hw.buildHWComponentList();
 
 app.route('/temp')
   .get(function (req, res){
-    var toReturn = getReadingsByType("Temp-Sensor");
+    var toReturn = hw.getReadingsByType("Temp-Sensor");
     res.send(toReturn);
   })
 

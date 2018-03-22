@@ -57,6 +57,39 @@ class HWController{
     }
     return readings;
   }
+
+  getReadingById(id){
+    var reading;
+    for (var i = 0; i < this.hwComponents.length; i++){
+      if (this.hwComponents[i].id === id){
+        var hwComp = {};
+        hwComp["zone"] = this.hwComponents[i].zone;
+        hwComp["type"] = this.hwComponents[i].type;
+        hwComp["id"] = this.hwComponents[i].id;
+        hwComp["reading"] = this.hwComponents[i].reading;
+        readings = hwComp;
+      }
+    }
+    return reading;
+  }
+
+  setReadingById(id, value){
+    for (var i = 0; i < this.hwComponents.length; i++){
+      if (this.hwComponents[i].id === id){
+        this.hwComponents[i].setReading(value);
+      }
+    }
+    return;
+  }
+
+  setPowerById(id, value){
+    for (var i = 0; i < this.hwComponents.length; i++){
+      if (this.hwComponents[i].id === id){
+        this.hwComponents[i].setPower(value);
+      }
+    }
+    return;
+  }
 }
 
 module.exports = HWController;
