@@ -54,7 +54,7 @@ button.addEventListener("click", function() {
     .done(function(data) {
       alert("Data Loaded: " + data);
     });*/
-    
+
   fetch('http://localhost:3000/temp')
     .then(function(response) {
       return response.json()
@@ -68,8 +68,8 @@ button.addEventListener("click", function() {
     })
 
   // Displaying the results here:
-  temp.textContent = input + String.fromCharCode(176);
-  temp2.textContent = input + String.fromCharCode(176);
+  // temp.textContent = input + String.fromCharCode(176);
+  // temp2.textContent = input + String.fromCharCode(176);
 })
 
 var co2_value = document.querySelector('.co2_data');
