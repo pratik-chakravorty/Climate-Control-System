@@ -1,0 +1,66 @@
+Optimizer
+
+inputs: sensor data (from monitoring), admin settings (from GUI)
+output: climate parameters to the hardware controller 
+
+func heating/cooling              //optimal temp range: 18-24 degrees celcius
+
+inputs: sensor data (from monitoring), admin settings (from GUI)
+
+for (zone=1 to 3)
+
+{
+	if (sensor_temp>desired_temp)
+	{
+	lower temperature //allow a +-3 degrees range of temperature that is set 
+	}
+else
+	{
+	increase temperature //allow a +-3 degrees range of temperature that is set
+	}
+return control signals to hwcontroller: turn on heating coil/cooling coils, turn on fans
+}
+
+
+func pressure 	//in the boiler		
+
+input: sensor data from monitoring
+
+Open valve if pressure exceeds 50 psi
+close valve when pressure falls down to 35psi
+
+return control signals to hwcontroller: open/close valve
+
+
+func humidity
+
+for (zone 1 to 3)
+
+input: sensor data from monitoring
+
+humidity range to maintain : 40-50% in summer months March-August, 30-40% in winter months Sept-February
+
+return control signals to hwcontroller: on/off damper
+
+
+func C02
+
+for (zone 1 to 3)
+
+input: sensor data from monitoring
+
+if (co2 level >1000 ppm)
+open fresh air valve
+
+close valve when pressure falls below 300ppm 
+
+while valve is open
+lower temperature in room 
+
+return control signals to hwcontroller: open/close valve, lower temperature
+
+
+
+
+
+
