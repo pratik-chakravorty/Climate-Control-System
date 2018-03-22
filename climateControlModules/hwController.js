@@ -3,13 +3,26 @@ var hwComponent = require('./hwComponent');
 class HWController{
   constructor(){
     this.hwComponents = [];
+    this.numZones = 3;
   }
 
   buildHWComponentList(){
-    var sensor = new hwComponent("Temp-Sensor", "tempsensor1");
-    this.hwComponents.push(sensor);
-    var fan = new hwComponent("Fan", "fan1");
-    this.hwComponents.push(fan);
+    for (var i = 0; i < this.numZones; i++){
+      var tempSensor = new hwComponent(String(i), "Temp-Sensor", "temp_sensor_" + i);
+      var co2Sensor = new hwComponent(String(i), "CO2-Sensor", "co2_sensor_" + i);
+      var humiditySensor = new hwComponent(String(i), "Humidity-Sensor", "humidity_sensor_" + i);
+      var fan = new hwComponent(String(i), "Fan", "fan_" + i);
+      var zoneHeater = new hwComponent(String(i), "Zone-Heater", "zone_heater_" + i);
+
+      this.hwComponents.push(tempSensor);
+      this.hwComponents.push(co2Sensor);
+      this.hwComponents.push(humiditySensor);
+      this.hwComponents.push(fan);
+      this.hwComponents.push(zoneHeater);
+    }
+
+    var pressureSensor = new hwComponent("Boiler", "Pressure-Sensor", "pressure_sensor_boiler");
+    this.hwComponents.push(pressureSensor);
   }
 
   addHWComponent(type, id){
@@ -20,10 +33,27 @@ class HWController{
   getReadings(){
     var readings = [];
     for (var i = 0; i < this.hwComponents.length; i++){
-      var hwComp = [];
-      hwComp.push(this.hwComponents[i].id);
-      hwComp.push(this.hwComponents[i].reading);
+      var hwComp = {};
+      hwComp["zone"] = this.hwComponents[i].zone;
+      hwComp["type"] = this.hwComponents[i].type;
+      hwComp["id"] = this.hwComponents[i].id;
+      hwComp["reading"] = this.hwComponents[i].reading;
       readings.push(hwComp);
+    }
+    return readings;
+  }
+
+  getReadingsByType(type){
+    var readings = [];
+    for (var i = 0; i < this.hwComponents.length; i++){
+      if (this.hwComponents[i].type === type){
+        var hwComp = {};
+        hwComp["zone"] = this.hwComponents[i].zone;
+        hwComp["type"] = this.hwComponents[i].type;
+        hwComp["id"] = this.hwComponents[i].id;
+        hwComp["reading"] = this.hwComponents[i].reading;
+        readings.push(hwComp);
+      }
     }
     return readings;
   }
