@@ -32,9 +32,10 @@ var count = 0;
 
 
 var hwController = require('./climateControlModules/hwController');
-//var monitor = require('./climateControlModules/monitor');
+var monitor = require('./climateControlModules/monitor');
 
 var hw =  new hwController();
+var mon = new monitor();
 
 
 hw.buildHWComponentList();
@@ -45,6 +46,12 @@ app.route('/temp')
     res.send(toReturn);
   })
 
+app.route('/allReadings')
+  .get(function (req, res){
+    var toReturn = mon.getMonitorReadings();
+    res.send(toReturn);
+  });
+
 
 app.listen(port);
 
@@ -52,10 +59,10 @@ console.log('Climate Control RESTful API server started on: ' + port);
 
 run();
 
-function doStuff(){
-  count += 1;
+function updateSystem(){
+  mon.updateHWReadings(hw.getReadings);
 }
 
 function run(){
-  setInterval(doStuff, 1000);
+  setInterval(updateSystem, 1000);
 }
