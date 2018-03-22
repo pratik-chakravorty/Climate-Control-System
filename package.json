@@ -1,0 +1,26 @@
+{
+  "name": "climate-control-system",
+  "version": "1.0.0",
+  "description": "Climate Control System CS6407",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glovehead/Climate-Control-System.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glovehead/Climate-Control-System/issues"
+  },
+  "homepage": "https://github.com/Glovehead/Climate-Control-System#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
