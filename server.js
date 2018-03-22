@@ -1,8 +1,8 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3000;
 
-  mongoose = require('mongoose'),
+  var mongoose = require('mongoose'),
   bodyParser = require('body-parser');
 
   //Mongoose connection
@@ -20,7 +20,7 @@ var hwController = require('./climateControlModules/hwController');
 
 
 
-var hw =  new hwController;
+var hw =  new hwController();
 
 hw.buildHWComponentList();
 
