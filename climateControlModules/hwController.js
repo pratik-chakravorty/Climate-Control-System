@@ -20,9 +20,12 @@ class HWController{
       this.hwComponents.push(fan);
       this.hwComponents.push(zoneHeater);
     }
-
+    var heatCoil = new hwComponent("Vent", "Heat-Coil", "heat_coil");
+    var coolCoil = new hwComponent("Vent", "Cool-Coil", "cool_coil");
     var pressureSensor = new hwComponent("Boiler", "Pressure-Sensor", "pressure_sensor_boiler");
     this.hwComponents.push(pressureSensor);
+    this.hwComponents.push(heatCoil);
+    this.hwComponents.push(coolCoil);
   }
 
   addHWComponent(type, id){
@@ -69,8 +72,9 @@ class HWController{
         hwComp["reading"] = this.hwComponents[i].reading;
         readings = hwComp;
       }
-    }
+
     return reading;
+    }
   }
 
   setReadingById(id, value){
