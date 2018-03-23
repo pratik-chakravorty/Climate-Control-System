@@ -12,64 +12,60 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-//var routes = require('./api/routes/climateControlSystemRoutes');
-//routes(app);
-/*
-var routes = function(app) {
-  app.route('/temp')
-    .get(function(req, res){
-      console.log("in routes");
-      res.send("shit yes");})
-    .post(function(req, res){
-          res.send(true);
-          }
-        );
-};
-
-*/
-var count = 0;
 
 
 
-var hwController = require('./climateControlModules/hwController');
-var monitor = require('./climateControlModules/monitor');
+// Initialization
 
-var hw =  new hwController();
-var mon = new monitor();
+var _hwController = require('./climateControlModules/hwController');
+var _monitor = require('./climateControlModules/monitor');
+var _settings = require('./climateControlModules/settings');
 
-var settings = {
-  "temp_zone_0": 20,
-  "temp_zone_1": 20,
-  "temp_zone_2": 20,
-  "co2_level": 200,
-  "humidity_level": 30,
-  "pressure": 60
-}
+var hwController =  new _hwController();
+var monitor = new _monitor();
+var settings = new _settings();
+
+hwController.buildHWComponentList();
 
 
-hw.buildHWComponentList();
+
+// Routes / GUI Controller
 
 app.route('/temp')
   .get(function (req, res){
-    var toReturn = hw.getReadingsByType("Temp-Sensor");
+    var toReturn = hwController.getReadingsByType("Temp-Sensor");
     res.send(toReturn);
   })
 
 app.route('/allReadings')
   .get(function (req, res){
-    var toReturn = mon.getMonitorReadings();
+    var toReturn = monitor.getMonitorReadings();
     res.send(toReturn);
   });
 
-app.route('/settings/:type')
+app.route('/settings/:id')
   .post(function(req, res){
-    var type = req.params.type;
+    if (!req.params.id && !req.query.value){
+      res.send("Error: Please enter type and value");
+      return;
+    }
+    var settingId = req.params.id;
     var value = Number(req.query.value);
-    settings[type] = value;
+    if (!value){
+      res.send("Error: Please enter a valid value");
+      return;
+    }
+    var returnStatus = settings.updateSettings(settingId, value);
     res.send("OK");
   });
 
+app.route('/settings')
+  .get(function(req, res){
+    var curSettings = settings.getSettings();
+    res.send(curSettings);
+  });
 
+// start listening and begin main system loop
 app.listen(port);
 
 console.log('Climate Control RESTful API server started on: ' + port);
@@ -77,7 +73,8 @@ console.log('Climate Control RESTful API server started on: ' + port);
 run();
 
 function updateSystem(){
-  mon.updateHWReadings(hw.getReadings());
+  // main system loop
+  monitor.updateHWReadings(hwController.getReadings());
 }
 
 function run(){
