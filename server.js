@@ -12,10 +12,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.use(function(req, res) {
-  res.status(404).send({"status": req.originalUrl + ' not found'})
-});
-
 
 // Climate Control module imports
 var _hwController = require('./climateControlModules/hwController');
