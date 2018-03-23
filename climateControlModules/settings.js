@@ -75,10 +75,10 @@ class Settings {
           status = "OK";
       }
       else {
-        status = "Invalid setting value";
+        status = "Error: Invalid setting value";
       }
     } else {
-      status = "Invalid Setting ID";
+      status = "Error: Invalid Setting ID";
     }
 
     return status;
