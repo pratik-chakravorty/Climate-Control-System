@@ -3,7 +3,7 @@ var _settings = require("../climateControlModules/settings");
 var settings = new _settings();
 
 describe("Settings tests", function(){
-  describe("Update settings", function(){
+  describe("updateSettings tests", function(){
     it("Returns error with invalid id", function(){
       var result = settings.updateSettings("invalid", 100);
       expect(result).toEqual("Error: Invalid Setting ID");
@@ -12,6 +12,11 @@ describe("Settings tests", function(){
     it("Returns error with null value", function(){
       var result = settings.updateSettings(null, 100);
       expect(result).toEqual("Error: Invalid Setting ID");
+    });
+
+    it("Returns error with string value", function(){
+      var result = settings.updateSettings("temp_zone_0", "junk");
+      expect(result).toEqual("Error: Invalid setting value");
     });
 
     it("Updates with temp valid", function(){
