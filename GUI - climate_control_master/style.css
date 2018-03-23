@@ -67,6 +67,23 @@ hr {
     transition:all .3s ease, border .3s ease
   }
 
+  .input2 {
+      width:80%;
+      font-size:.875em;
+      overflow: hidden;
+      padding:0 1.25rem;
+      height:3rem;
+      border-radius:2px;
+      border:1px solid #dbe2e8;
+      outline:0;
+      color:#2e3d49;
+      margin-bottom:10px;
+      font-family:'Open Sans';
+      line-height:normal;
+      box-shadow:0 0.25em 0.5em 0 rgba(46,61,73,.12);
+      transition:all .3s ease, border .3s ease
+    }
+
   input[type=text]:hover,input[type=email]:hover {
     box-shadow: 0 0.125em 0.5em 0 rgba(46,61,73,.06);
   }
@@ -193,6 +210,20 @@ hr {
       display:flex;
       margin-top: 60px;
       margin-bottom: 40px;
+      justify-content: space-around;
+  }
+
+  .zonesT {
+      display:flex;
+      margin-top: 40px;
+      margin-bottom: 0px;
+      justify-content: space-around;
+  }
+
+  .zonesTS {
+      display:flex;
+      margin-top: 40px;
+      margin-bottom: 0px;
       justify-content: space-around;
   }
 
