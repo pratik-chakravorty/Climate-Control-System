@@ -13,14 +13,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-
-
-// Initialization
-
+// Climate Control module imports
 var _hwController = require('./climateControlModules/hwController');
 var _monitor = require('./climateControlModules/monitor');
 var _settings = require('./climateControlModules/settings');
 
+
+// Initialization
 var hwController =  new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
@@ -45,18 +44,24 @@ app.route('/allReadings')
 
 app.route('/settings/:id')
   .post(function(req, res){
+    var status = {
+      "status": "Error"
+    };
     if (!req.params.id && !req.query.value){
-      res.send("Error: Please enter type and value");
+      status['status'] = "Error: Please enter type and value";
+      res.send(status);
       return;
     }
     var settingId = req.params.id;
     var value = Number(req.query.value);
     if (!value){
-      res.send("Error: Please enter a valid value");
+      status['status'] = "Error: Please enter a valid value";
+      res.send(status);
       return;
     }
     var returnStatus = settings.updateSettings(settingId, value);
-    res.send("OK");
+    status['status'] = returnStatus;
+    res.send(status);
   });
 
 app.route('/settings')
