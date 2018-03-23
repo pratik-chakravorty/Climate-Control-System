@@ -1,17 +1,25 @@
 class Settings {
   constructor(){
     this.settingsJSON = {
+      "fan_zone_0": 200,
+      "fan_zone_1": 200,
+      "fan_zone_2": 200,
       "temp_zone_0": 20,
       "temp_zone_1": 20,
       "temp_zone_2": 20,
       "co2_zone_0": 200,
       "co2_zone_1": 200,
       "co2_zone_2": 200,
+      "damper_in": 50,
+      "damper_recycle": 50,
+      "damper_out": 50,
+      "temp_heat_coil": 20,
+      "temp_cool_coil": 20,
       "humidity_level": 30,
       "pressure_boiler": 60
     };
 
-    this.validTypes = ["temp", "co2", "humidity", "pressure"];
+    this.validTypes = ["fan", "damper", "temp", "co2", "humidity", "pressure"];
   }
 
   getSettings(){
@@ -34,7 +42,14 @@ class Settings {
       } else if (settingType === "pressure" && value > 20 && value < 100){
         this.settingsJSON[id] = value;
         status = "OK";
-      } else {
+      } else if (settingType === "fan" && value > 0 && value < 400) {
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "damper" && value > 0 && value < 100) {
+        this.settingsJSON[id] = value;
+        status = "OK";
+      }
+      else {
         status = "Invalid setting value";
       }
     } else {
