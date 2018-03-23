@@ -180,7 +180,7 @@ buttonV.addEventListener("click", function() {
     modal.open();
     return;
   }
-  var id = "temp_zone_1"
+  var id = "temp_heat_coil"
   var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
@@ -284,10 +284,18 @@ setInterval(() => {
       var temp3 = document.querySelector('.temp3');
       var tempV = document.querySelector('.tempV');
 
+      var co2 = document.querySelector('.co2_data');
+      var co22 = document.querySelector('.co2_data2');
+      var co23 = document.querySelector('.co2_data3');
+
       temp.textContent = JSON.parse(json[0].reading);
-      temp2.textContent = JSON.parse(json[5].reading);
-      temp3.textContent = JSON.parse(json[10].reading);
-      tempV.textContent = JSON.parse(json[16].reading);
+      temp2.textContent = JSON.parse(json[4].reading);
+      temp3.textContent = JSON.parse(json[8].reading);
+      tempV.textContent = JSON.parse(json[12].reading);
+
+      co2.textContent = JSON.parse(json[1].reading);
+      co22.textContent = JSON.parse(json[5].reading);
+      co23.textContent = JSON.parse(json[9].reading);
 
     }).catch(function(ex) {
       console.log('parsing failed', ex);
