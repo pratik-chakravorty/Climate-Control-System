@@ -5,7 +5,7 @@ var hwcontroller = new HWController();
 hwcontroller.buildHWComponentList();
 
 describe("HWController Tests", function(){
-  describe("buildHWComponentList tests", function(){
+  describe("buildHWComponentList() tests", function(){
     it('hardware components temp reading is 15', () => {
 
         expect(hwcontroller.hwComponents[0]['reading']).toBe(15);
