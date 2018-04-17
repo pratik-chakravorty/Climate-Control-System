@@ -5,13 +5,13 @@ var modal = new tingle.modal({
   closeMethods: ['overlay', 'button', 'escape'],
   closeLabel: "Close",
   cssClass: ['custom-class-1', 'custom-class-2'],
-  onOpen: function() {
+  onOpen: function () {
     console.log('modal open');
   },
-  onClose: function() {
+  onClose: function () {
     console.log('modal closed');
   },
-  beforeClose: function() {
+  beforeClose: function () {
     // here's goes some logic
     // e.g. save content before closing the modal
     return true; // close the modal
@@ -25,7 +25,7 @@ var modal = new tingle.modal({
 /* Button Set Temperature - Zone 1 */
 var buttonZ1 = document.querySelector('.buttonZ1');
 //console.log(button);
-buttonZ1.addEventListener("click", function() {
+buttonZ1.addEventListener("click", function () {
   var input = document.querySelector('.inputZ1').value;
   //console.log(input);
   if (input.length == 0) {
@@ -46,7 +46,7 @@ buttonZ1.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_0"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   /*postData('http://localhost:3000/settings/' + id, {
       value: input
@@ -57,18 +57,18 @@ buttonZ1.addEventListener("click", function() {
   //function postData(url, data) {
   var data = input;
   fetch(url, {
-      //body: data, // must match 'Content-Type' header
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, same-origin, *omit
-      headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-      },
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      redirect: 'follow', // *manual, follow, error
-      referrer: 'no-referrer', // *client, no-referrer
-    })
+    //body: data, // must match 'Content-Type' header
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, same-origin, *omit
+    headers: {
+      'user-agent': 'Mozilla/4.0 MDN Example',
+      'content-type': 'application/json'
+    },
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, cors, *same-origin
+    redirect: 'follow', // *manual, follow, error
+    referrer: 'no-referrer', // *client, no-referrer
+  })
     .then(response => response.json())
     .then(response => console.log(response))
   // Default options are marked with *
@@ -77,7 +77,7 @@ buttonZ1.addEventListener("click", function() {
 
 /* Button Set Temperature - Zone 2 */
 var buttonZ2 = document.querySelector('.buttonZ2');
-buttonZ2.addEventListener("click", function() {
+buttonZ2.addEventListener("click", function () {
   var input = document.querySelector('.inputZ2').value;
   //console.log(input);
   if (input.length == 0) {
@@ -97,29 +97,29 @@ buttonZ2.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_1"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
-      //body: data, // must match 'Content-Type' header
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, same-origin, *omit
-      headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-      },
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      redirect: 'follow', // *manual, follow, error
-      referrer: 'no-referrer', // *client, no-referrer
-    })
+    //body: data, // must match 'Content-Type' header
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, same-origin, *omit
+    headers: {
+      'user-agent': 'Mozilla/4.0 MDN Example',
+      'content-type': 'application/json'
+    },
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, cors, *same-origin
+    redirect: 'follow', // *manual, follow, error
+    referrer: 'no-referrer', // *client, no-referrer
+  })
     .then(response => response.json())
     .then(response => console.log(response))
 });
 
 /* Button Set Temperature - Zone 3 */
 var buttonZ3 = document.querySelector('.buttonZ3');
-buttonZ3.addEventListener("click", function() {
+buttonZ3.addEventListener("click", function () {
   var input = document.querySelector('.inputZ3').value;
   //console.log(input);
   if (input.length == 0) {
@@ -139,29 +139,29 @@ buttonZ3.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_2"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
-      //body: data, // must match 'Content-Type' header
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, same-origin, *omit
-      headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-      },
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      redirect: 'follow', // *manual, follow, error
-      referrer: 'no-referrer', // *client, no-referrer
-    })
+    //body: data, // must match 'Content-Type' header
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, same-origin, *omit
+    headers: {
+      'user-agent': 'Mozilla/4.0 MDN Example',
+      'content-type': 'application/json'
+    },
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, cors, *same-origin
+    redirect: 'follow', // *manual, follow, error
+    referrer: 'no-referrer', // *client, no-referrer
+  })
     .then(response => response.json())
     .then(response => console.log(response))
 });
 
 /* Button Set Temperature - Vent */
 var buttonV = document.querySelector('.buttonV');
-buttonV.addEventListener("click", function() {
+buttonV.addEventListener("click", function () {
   var input = document.querySelector('.inputV').value;
   //console.log(input);
   if (input.length == 0) {
@@ -181,22 +181,22 @@ buttonV.addEventListener("click", function() {
     return;
   }
   var id = "temp_heat_coil"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
-      //body: data, // must match 'Content-Type' header
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, same-origin, *omit
-      headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-      },
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, cors, *same-origin
-      redirect: 'follow', // *manual, follow, error
-      referrer: 'no-referrer', // *client, no-referrer
-    })
+    //body: data, // must match 'Content-Type' header
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, same-origin, *omit
+    headers: {
+      'user-agent': 'Mozilla/4.0 MDN Example',
+      'content-type': 'application/json'
+    },
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, cors, *same-origin
+    redirect: 'follow', // *manual, follow, error
+    referrer: 'no-referrer', // *client, no-referrer
+  })
     .then(response => response.json())
     .then(response => console.log(response))
 });
@@ -271,10 +271,10 @@ setInterval(() => {
 
 // Initializing the allReadings query to the API:
 setInterval(() => {
-  fetch('http://45.76.143.202:3000/allReadings')
-    .then(function(response) {
+  fetch('http://localhost:3000/allReadings')
+    .then(function (response) {
       return response.json()
-    }).then(function(json) {
+    }).then(function (json) {
       // Parse data
       console.log('parsed json', json);
       // Do stuff:
@@ -297,7 +297,7 @@ setInterval(() => {
       co22.textContent = JSON.parse(json[5].reading);
       co23.textContent = JSON.parse(json[9].reading);
 
-    }).catch(function(ex) {
+    }).catch(function (ex) {
       console.log('parsing failed', ex);
       //console.log('parsing failed', response);
     })

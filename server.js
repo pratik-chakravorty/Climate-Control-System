@@ -18,7 +18,7 @@ var _hwController = require('./climateControlModules/hwController');
 var _monitor = require('./climateControlModules/monitor');
 var _settings = require('./climateControlModules/settings');
 
-//var _optimizer = require('./climateControlModules/optimizer');
+var _optimizer = require('./climateControlModules/optimizer');
 
 // var _optimizer = require('./climateControlModules/optimizer');
 
@@ -28,8 +28,8 @@ var hwController = new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
 
-//var optimizer = new _optimizer();
-// var optimizer = new _optimizer();
+var optimizer = new _optimizer();
+
 
 
 hwController.buildHWComponentList();
@@ -102,5 +102,5 @@ function updateSystem() {
 }
 
 function run() {
-  setInterval(updateSystem, 1000);
+  setInterval(updateSystem, 5000);
 }

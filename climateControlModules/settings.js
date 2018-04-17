@@ -1,5 +1,5 @@
 class Settings {
-  constructor(){
+  constructor() {
     this.settingsJSON = {
       "fan_zone_0": 200,
       "fan_zone_1": 200,
@@ -23,59 +23,61 @@ class Settings {
     this.validTypes = ["fan", "damper", "temp", "co2", "humidity", "pressure"];
   }
 
-  getSettings(){
+  getSettings() {
     return this.settingsJSON;
   }
-/*
-  updateSettings(id, value){
-    var status = "Error";
-    var settingType = id.split("_")[0];
-    if (this.settingsJSON.hasOwnProperty(id)) {
-      if (settingType === "temp" && value > 0 && value < 50){
-        this.settingsJSON[id] = value;
-        status = "OK";
-      } else if (settingType === "co2" && value > 0 && value < 800){
-        this.settingsJSON[id] = value;
-        status = "OK";
-      } else if (settingType === "humidity" && value > 10 && value < 80){
-        this.settingsJSON[id] = value;
-        status = "OK";
-      } else if (settingType === "pressure" && value > 20 && value < 100){
-        this.settingsJSON[id] = value;
-        status = "OK";
-      } else if (settingType === "fan" && value > 0 && value < 400) {
-        this.settingsJSON[id] = value;
-        status = "OK";
-      } else if (settingType === "damper" && value > 0 && value < 100) {
-        this.settingsJSON[id] = value;
-        status = "OK";
+  /*
+    updateSettings(id, value){
+      var status = "Error";
+      var settingType = id.split("_")[0];
+      if (this.settingsJSON.hasOwnProperty(id)) {
+        if (settingType === "temp" && value > 0 && value < 50){
+          this.settingsJSON[id] = value;
+          status = "OK";
+        } else if (settingType === "co2" && value > 0 && value < 800){
+          this.settingsJSON[id] = value;
+          status = "OK";
+        } else if (settingType === "humidity" && value > 10 && value < 80){
+          this.settingsJSON[id] = value;
+          status = "OK";
+        } else if (settingType === "pressure" && value > 20 && value < 100){
+          this.settingsJSON[id] = value;
+          status = "OK";
+        } else if (settingType === "fan" && value > 0 && value < 400) {
+          this.settingsJSON[id] = value;
+          status = "OK";
+        } else if (settingType === "damper" && value > 0 && value < 100) {
+          this.settingsJSON[id] = value;
+          status = "OK";
+        }
+        else {
+          status = "Invalid setting value";
+        }
+      } else {
+        status = "Invalid Setting ID";
       }
-      else {
-        status = "Invalid setting value";
-      }
-    } else {
-      status = "Invalid Setting ID";
+  
+      return status;
     }
-
-    return status;
-  }
-  */
-  updateSettings(id, value){
+    */
+  updateSettings(id, value) {
     var status = "Error";
     if (!id) {
       status = "Error: Invalid Setting ID";
     } else {
       var settingType = id.split("_")[0];
       if (this.settingsJSON.hasOwnProperty(id)) {
-        if ( (settingType === "temp" && value > 0 && value < 50) ||
+        if ((settingType === "temp" && value > 0 && value < 50) ||
           (settingType === "co2" && value > 0 && value < 800) ||
           (settingType === "humidity" && value > 10 && value < 80) ||
           (settingType === "pressure" && value > 20 && value < 100) ||
           (settingType === "fan" && value > 0 && value < 400) ||
           (settingType === "damper" && value > 0 && value < 100) ||
-          (settingType === "coil" && value >= 0 && value <= 1) ) {
-            this.settingsJSON[id] = value;
-            status = "OK";
+          (settingType === "coil" && value >= 0 && value <= 1)) {
+          this.settingsJSON[id] = value;
+          status = "OK";
+          console.log('Check it')
+          console.log(this.settingsJSON);
         }
         else {
           status = "Error: Invalid setting value";

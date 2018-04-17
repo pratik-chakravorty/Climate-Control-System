@@ -51,11 +51,11 @@ class optimizer {
   updateSettings(settings) {
     //console.log(settings);
     this.settings = settings;
-    //console.log(this.settings)
 
   }
 
   optimize() {
+    console.log('Hello World!!!')
     this.valuesToChange = [];
     var values = Object.values(this.defaultSettings);
     var names = Object.keys(this.defaultSettings);
