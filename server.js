@@ -17,12 +17,14 @@ app.use(bodyParser.json());
 var _hwController = require('./climateControlModules/hwController');
 var _monitor = require('./climateControlModules/monitor');
 var _settings = require('./climateControlModules/settings');
+var _optimizer = require('./climateControlModules/optimizer');
 
 
 // Initialization
 var hwController =  new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
+var optimizer = new _optimizer();
 
 hwController.buildHWComponentList();
 
@@ -80,6 +82,11 @@ run();
 function updateSystem(){
   // main system loop
   monitor.updateHWReadings(hwController.getReadings());
+  //optimizer.updateSettings(settings.getSettings());
+  //optimizer.updateReadings(monitor.getMonitorReadings());
+  //optimizer.optimize();
+  //hwController.setReadingsByControlList(optimizer.getValuesToChange());
+
 }
 
 function run(){

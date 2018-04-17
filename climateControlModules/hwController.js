@@ -36,6 +36,17 @@ class HWController{
     this.hwComponents.push(pressureSensor);
   }
 
+  getHWComponentList(){
+    var comps = [];
+    for (var i = 0; i < this.hwComponents.length; i++){
+      var hwComp = {};
+      hwComp["zone"] = this.hwComponents[i].zone;
+      hwComp["type"] = this.hwComponents[i].type;
+      hwComp["id"] = this.hwComponents[i].id;
+    }
+    return comps;
+  }
+
   addHWComponent(type, id){
     var newComp = new hwComponent(type, id);
     this.hwComponents.push(newComp);
