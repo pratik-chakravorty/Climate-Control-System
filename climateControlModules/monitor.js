@@ -23,7 +23,9 @@ class Monitor {
         error.errorMsg = "ERROR: Component malfunction";
       } else {
         if (component.type == "Temp-Sensor"){
-          if
+          if (component.reading < -30 || component) {
+            
+          }
         }
         else if (component.type == "CO2-Sensor"){
 
