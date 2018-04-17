@@ -47,8 +47,8 @@ class HWController{
     return comps;
   }
 
-  addHWComponent(type, id){
-    var newComp = new hwComponent(type, id);
+  addHWComponent(zone, type, id){
+    var newComp = new hwComponent(zone, type, id);
     this.hwComponents.push(newComp);
   }
 
@@ -96,13 +96,25 @@ class HWController{
     }
   }
 
-  setReadingById(id, value){
+  setSingleReadingById(id, value){
     for (var i = 0; i < this.hwComponents.length; i++){
       if (this.hwComponents[i].id === id){
         this.hwComponents[i].setReading(value);
       }
     }
     return;
+  }
+
+  setReadingsById(readingList){
+    for (var i = 0; i < readingList.length; i++){
+      var id = readingList[i].id;
+      var reading = readingList[i].reading;
+      for (var j = 0; j < this.hwComponents.length; j++){
+        if (id == this.hwComponents[j].id){
+          this.hwComponents[j].setReading(reading);
+        }
+      }
+    }
   }
 
   setPowerById(id, value){
