@@ -124,7 +124,5 @@ describe("hwComponent Tests", function(){
       var result = hwComponent.setReading(101);
       expect(result).toEqual("Error: Invalid value");
     });
-
-
   });
 });
