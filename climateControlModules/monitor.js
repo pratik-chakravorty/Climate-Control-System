@@ -18,51 +18,42 @@ class Monitor {
       var component = this.hwReadings[i];
       if (component.reading == null){
         component["status"] = "ERROR: Component malfunction";
-        this.monitoredReadings.append(component);
       } else {
         if (component.type == "Temp-Sensor"){
-          component["status"] = getTempStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getTempStatus(component.reading);
         }
         else if (component.type == "CO2-Sensor"){
-          component["status"] = getCO2Status(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getCO2Status(component.reading);
         }
         else if (component.type == "Pressure-Sensor"){
-          component["status"] = getPressureStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getPressureStatus(component.reading);
         }
         else if (component.type == "Humidity-Sensor"){
-          component["status"] = getHumidityStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getHumidityStatus(component.reading);
         }
         else if (component.type == "Damper"){
-          component["status"] = getDamperStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getDamperStatus(component.reading);
         }
         else if (component.type == "Fan"){
-          component["status"] = getFanStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getFanStatus(component.reading);
         }
         else if (component.type == "Zone-Heater"){
-          component["status"] = getHeaterStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getHeaterStatus(component.reading);
         }
         else if (component.type == "Heat-Coil"){
-          component["status"] = getHeaterStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getHeaterStatus(component.reading);
         }
         else if (component.type == "Cool-Coil"){
-          component["status"] = getCoolerStatus(component.reading);
-          this.monitoredReadings.append(component);
+          component["status"] = this.getCoolerStatus(component.reading);
         }
       }
+      this.monitoredReadings.push(component);
     }
   }
 
   getTempStatus(reading){
     var status = "OK"
-    if (reading < -40 || reading > 70) {
+    if (reading < -50 || reading > 100) {
       status = "ERROR: Component malfunction";
     }
     else if (reading < 0 || reading > 40){
