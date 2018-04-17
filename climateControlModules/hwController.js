@@ -81,19 +81,20 @@ class HWController{
   }
 
   getReadingById(id){
-    var reading;
+    console.log(id);
+    var reading = null;
     for (var i = 0; i < this.hwComponents.length; i++){
-      if (this.hwComponents[i].id === id){
+      if (this.hwComponents[i]["id"] == id){
         var hwComp = {};
         hwComp["zone"] = this.hwComponents[i].zone;
         hwComp["type"] = this.hwComponents[i].type;
         hwComp["id"] = this.hwComponents[i].id;
         hwComp["reading"] = this.hwComponents[i].reading;
-        readings = hwComp;
+        reading = hwComp;
+        break;
       }
-
-    return reading;
     }
+    return reading;
   }
 
   setSingleReadingById(id, value){
