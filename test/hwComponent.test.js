@@ -2,7 +2,7 @@ var expect = require("expect");
 var _hwComponent = require("../climateControlModules/hwComponent");
 
 describe("hwComponent Tests", function(){
-  describe("setReading Tests", function(){
+  describe("setReading() Tests", function(){
     it("Returns error if trying to set Temp-Sensor reading", function(){
       var hwComponent = new _hwComponent("0", "Temp-Sensor", "temp_sensor_0");
       var result = hwComponent.setReading(10);

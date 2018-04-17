@@ -57,7 +57,7 @@ class Monitor {
       status = "ERROR: Component malfunction";
     }
     else if (reading < 0 || reading > 40){
-      status = "WARNING";
+      status = "WARNING: Temperature outside acceptable ranges";
     }
     return status;
   }
@@ -133,7 +133,7 @@ class Monitor {
 
   getCoolerStatus(reading){
     var status = "OK";
-    if (reading < 0 || reading < 30){
+    if (reading < 0 || reading > 30){
       status = "ERROR: Component malfunction";
     }
     return status;

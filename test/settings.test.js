@@ -3,7 +3,7 @@ var _settings = require("../climateControlModules/settings");
 var settings = new _settings();
 
 describe("Settings tests", function(){
-  describe("updateSettings tests", function(){
+  describe("updateSettings() tests", function(){
     it("Returns error with invalid id", function(){
       var result = settings.updateSettings("invalid", 100);
       expect(result).toEqual("Error: Invalid Setting ID");
