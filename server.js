@@ -88,6 +88,7 @@ run();
 function updateSystem(){
   // main system loop
   monitor.updateHWReadings(hwController.getReadings());
+  monitor.monitor();
   //optimizer.updateSettings(settings.getSettings());
   //optimizer.updateReadings(monitor.getMonitorReadings());
   //optimizer.optimize();
