@@ -16,17 +16,45 @@ class Monitor {
 
   monitor(){
     for (var i = 0; i < this.hwReadings.length; i++){
-      if (this.hwReadings[i].type == ""){
-        
-      }
-      if (this.hwReadings[i].type == ""){
+      var component = this.hwReadings[i];
+      var error = {id: "", errorMsg: ""};
+      if (component.reading == null){
+        error.id = this.hwReadings[i].id;
+        error.errorMsg = "ERROR: Component malfunction";
+      } else {
+        if (component.type == "Temp-Sensor"){
+          if
+        }
+        else if (component.type == "CO2-Sensor"){
 
+        }
+        else if (component.type == "Pressure-Sensor"){
+
+        }
+        else if (this.hwReadings[i].type == "Humidity-Sensor"){
+
+        }
+        else if (this.hwReadings[i].type == "Damper"){
+
+        }
+        else if (this.hwReadings[i].type == "Fan"){
+
+        }
+        else if (this.hwReadings[i].type == "Zone-Heater"){
+
+        }
+        else if (this.hwReadings[i].type == "Heat-Coil"){
+
+        }
+        else if (this.hwReadings[i].type == "Cool-Coil"){
+
+        }
       }
     }
   }
 
   getMonitorReadings(){
-    return this.monitoredReadings;
+    return this.hwReadings;
   }
 
 }
