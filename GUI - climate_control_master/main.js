@@ -288,10 +288,10 @@ setInterval(() => {
       var co22 = document.querySelector('.co2_data2');
       var co23 = document.querySelector('.co2_data3');
 
-      temp.textContent = JSON.parse(json[0].reading);
-      temp2.textContent = JSON.parse(json[4].reading);
-      temp3.textContent = JSON.parse(json[8].reading);
-      tempV.textContent = JSON.parse(json[12].reading);
+      temp.textContent = JSON.parse(json[4].reading);
+      temp2.textContent = JSON.parse(json[8].reading);
+      temp3.textContent = JSON.parse(json[12].reading);
+      tempV.textContent = JSON.parse(json[16].reading);
 
       co2.textContent = JSON.parse(json[1].reading);
       co22.textContent = JSON.parse(json[5].reading);
