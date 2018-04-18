@@ -46,7 +46,7 @@ buttonZ1.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_0"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   /*postData('http://localhost:3000/settings/' + id, {
       value: input
@@ -97,7 +97,7 @@ buttonZ2.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_1"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
@@ -139,7 +139,7 @@ buttonZ3.addEventListener("click", function() {
     return;
   }
   var id = "temp_zone_2"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
@@ -181,7 +181,7 @@ buttonV.addEventListener("click", function() {
     return;
   }
   var id = "temp_heat_coil"
-  var url = 'http://45.76.143.202:3000/settings/' + id + "?value=" + input;
+  var url = 'http://localhost:3000/settings/' + id + "?value=" + input;
   console.log(url);
   var data = input;
   fetch(url, {
@@ -271,7 +271,7 @@ setInterval(() => {
 
 // Initializing the allReadings query to the API:
 setInterval(() => {
-  fetch('http://45.76.143.202:3000/allReadings')
+  fetch('http://localhost:3000/allReadings')
     .then(function(response) {
       return response.json()
     }).then(function(json) {
