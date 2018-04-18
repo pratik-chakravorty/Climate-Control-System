@@ -24,7 +24,7 @@ class Simulator {
         "heater": 0,
         "heaterOn": false,
         "fan": 0,
-        "co2": 25,
+        "co2": 250,
         "numPeople": 10
       },
       "Zone-1": {
