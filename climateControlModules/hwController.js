@@ -7,11 +7,14 @@ class HWController{
   }
 
   buildHWComponentList(){
+    var tempSensorOutside = new hwComponent("Outside", "Temp-Sensor", "temp_sensor_outside");
+    this.hwComponents.push(tempSensorOutside);
+
     for (var i = 0; i < this.numZones; i++){
-      var tempSensor = new hwComponent(String(i), "Temp-Sensor", "temp_sensor_" + i);
-      var co2Sensor = new hwComponent(String(i), "CO2-Sensor", "co2_sensor_" + i);
-      var fan = new hwComponent(String(i), "Fan", "fan_" + i);
-      var zoneHeater = new hwComponent(String(i), "Zone-Heater", "zone_heater_" + i);
+      var tempSensor = new hwComponent("Zone-" + String(i), "Temp-Sensor", "temp_sensor_" + i);
+      var co2Sensor = new hwComponent("Zone-" + String(i), "CO2-Sensor", "co2_sensor_" + i);
+      var fan = new hwComponent("Zone-" + String(i), "Fan", "fan_" + i);
+      var zoneHeater = new hwComponent("Zone-" + String(i), "Zone-Heater", "zone_heater_" + i);
 
       this.hwComponents.push(tempSensor);
       this.hwComponents.push(co2Sensor);
@@ -81,7 +84,6 @@ class HWController{
   }
 
   getReadingById(id){
-    console.log(id);
     var reading = null;
     for (var i = 0; i < this.hwComponents.length; i++){
       if (this.hwComponents[i]["id"] == id){
@@ -107,12 +109,19 @@ class HWController{
   }
 
   setReadingsById(readingList){
+    console.log("In reading list:");
+    console.log(readingList);
+    console.log("Done");
     for (var i = 0; i < readingList.length; i++){
       var id = readingList[i].id;
       var reading = readingList[i].reading;
       for (var j = 0; j < this.hwComponents.length; j++){
+        // console.log(id);
+        // console.log(this.hwComponents[j].id + "\n");
         if (id == this.hwComponents[j].id){
           this.hwComponents[j].setReading(reading);
+          // console.log(this.hwComponents[j].reading);
+          break;
         }
       }
     }
@@ -125,6 +134,17 @@ class HWController{
       }
     }
     return;
+  }
+
+  simSetReadings(readingList){
+    for (var i = 0; i < readingList.length; i++){
+      var toUpdate = readingList[i];
+      for (var j = 0; j < this.hwComponents.length; j++){
+        if (this.hwComponents[j].id == toUpdate.id){
+          this.hwComponents[j].simSetReading(toUpdate.reading);
+        }
+      }
+    }
   }
 }
 

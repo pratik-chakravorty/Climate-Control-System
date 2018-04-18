@@ -17,8 +17,9 @@ app.use(bodyParser.json());
 var _hwController = require('./climateControlModules/hwController');
 var _monitor = require('./climateControlModules/monitor');
 var _settings = require('./climateControlModules/settings');
+var _simulator = require('./climateControlModules/simulator');
 
-//var _optimizer = require('./climateControlModules/optimizer');
+var _optimizer = require('./climateControlModules/optimizer');
 
 // var _optimizer = require('./climateControlModules/optimizer');
 
@@ -27,8 +28,9 @@ var _settings = require('./climateControlModules/settings');
 var hwController = new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
+var simulator = new _simulator();
 
-//var optimizer = new _optimizer();
+var optimizer = new _optimizer();
 // var optimizer = new _optimizer();
 
 
@@ -42,12 +44,14 @@ app.route('/temp')
   .get(function (req, res) {
     var toReturn = hwController.getReadingsByType("Temp-Sensor");
     res.send(toReturn);
+    return;
   })
 
 app.route('/allReadings')
   .get(function (req, res) {
     var toReturn = monitor.getMonitorReadings();
     res.send(toReturn);
+    return;
   });
 
 app.route('/settings/:id')
@@ -70,6 +74,7 @@ app.route('/settings/:id')
     var returnStatus = settings.updateSettings(settingId, value);
     status['status'] = returnStatus;
     res.send(status);
+    return;
   });
 
 app.route('/settings')
@@ -82,22 +87,28 @@ app.route('/settings')
 app.listen(port);
 
 console.log('Climate Control RESTful API server started on: ' + port);
-
+var init = true;
 run();
 
 function updateSystem() {
   // main system loop
+  if (init){
+
+    init = false;
+  }
   monitor.updateHWReadings(hwController.getReadings());
   monitor.monitor();
   optimizer.updateSettings(settings.getSettings());
   optimizer.getMonitorReadings(monitor.getMonitorReadings());
   optimizer.optimize();
-  hwController.setReadingsById(optimizer.getValuesToChange());
-  console.log('Monitor Readings')
-  console.log('-----')
-  console.log(hwController.getReadingById("zone_heater_0"));
-  console.log(hwController.getReadingById("zone_heater_1"));
-  console.log(hwController.getReadingById("zone_heater_2"));
+  var values = optimizer.getValuesToChange();
+  console.log(values);
+  hwController.setReadingsById(values);
+  // console.log('Monitor Readings')
+  // console.log('-----')
+  // console.log(hwController.getReadingById("zone_heater_0"));
+  // console.log(hwController.getReadingById("zone_heater_1"));
+  // console.log(hwController.getReadingById("zone_heater_2"));
 
 }
 

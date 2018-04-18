@@ -7,9 +7,9 @@ class Settings {
       "temp_zone_0": 20,
       "temp_zone_1": 20,
       "temp_zone_2": 20,
-      "co2_zone_0": 200,
-      "co2_zone_1": 200,
-      "co2_zone_2": 200,
+      "co2_zone_0": 750,
+      "co2_zone_1": 750,
+      "co2_zone_2": 750,
       "damper_in": 50,
       "damper_recycle": 50,
       "damper_out": 50,
@@ -20,12 +20,19 @@ class Settings {
       "pressure_boiler": 60
     };
 
+
+
     this.validTypes = ["fan", "damper", "temp", "co2", "humidity", "pressure"];
   }
 
   getSettings(){
     return this.settingsJSON;
   }
+
+  // bypassOptimizerSettings(){
+  //
+  //   return toReturn;
+  // }
 /*
   updateSettings(id, value){
     var status = "Error";
