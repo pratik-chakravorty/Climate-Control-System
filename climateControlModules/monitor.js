@@ -14,6 +14,7 @@ class Monitor {
   }
 
   monitor(){
+    this.monitoredReadings = [];
     for (var i = 0; i < this.hwReadings.length; i++){
       var component = this.hwReadings[i];
       if (component.reading == null){

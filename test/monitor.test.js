@@ -1,4 +1,6 @@
 var Monitor = require('../climateControlModules/monitor');
+var HWComponent = require('../climateControlModules/hwComponent');
+var HWController = require('..climateControlModules/hwController');
 var expect = require('expect');
 
 var monitor = new Monitor();
@@ -181,5 +183,9 @@ describe("Monitor Tests", function(){
       expect(status).toEqual("OK");
     });
   });
+
+  // describe("monitor() Tests", function(){
+  //
+  // })
 
 })

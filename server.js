@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 var _hwController = require('./climateControlModules/hwController');
 var _monitor = require('./climateControlModules/monitor');
 var _settings = require('./climateControlModules/settings');
+var _simulator = require('./climateControlModules/simulator');
 
 //var _optimizer = require('./climateControlModules/optimizer');
 
@@ -27,6 +28,7 @@ var _settings = require('./climateControlModules/settings');
 var hwController =  new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
+var simulator = new _simulator();
 
 //var optimizer = new _optimizer();
 // var optimizer = new _optimizer();
@@ -42,12 +44,14 @@ app.route('/temp')
   .get(function (req, res){
     var toReturn = hwController.getReadingsByType("Temp-Sensor");
     res.send(toReturn);
+    return;
   })
 
 app.route('/allReadings')
   .get(function (req, res){
     var toReturn = monitor.getMonitorReadings();
     res.send(toReturn);
+    return;
   });
 
 app.route('/settings/:id')
@@ -70,6 +74,7 @@ app.route('/settings/:id')
     var returnStatus = settings.updateSettings(settingId, value);
     status['status'] = returnStatus;
     res.send(status);
+    return;
   });
 
 app.route('/settings')
@@ -87,12 +92,15 @@ run();
 
 function updateSystem(){
   // main system loop
+  hwController.setReadingsById(settings.bypassOptimizerSettings());
   monitor.updateHWReadings(hwController.getReadings());
   monitor.monitor();
   //optimizer.updateSettings(settings.getSettings());
   //optimizer.updateReadings(monitor.getMonitorReadings());
   //optimizer.optimize();
-  //hwController.setReadingsByControlList(optimizer.getValuesToChange());
+  simulator.updateHWReadings(monitor.getMonitorReadings());
+  simulator.updateSimulation();
+  hwController.simSetReadings(simulator.getValuesToChange());
 
 }
 
