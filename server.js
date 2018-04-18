@@ -5,11 +5,11 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-  //Mongoose connection
-  //mongoose.Promise = global.Promise;
-  //mongoose.connect('');
+//Mongoose connection
+//mongoose.Promise = global.Promise;
+//mongoose.connect('');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
@@ -25,7 +25,7 @@ var _simulator = require('./climateControlModules/simulator');
 
 
 // Initialization
-var hwController =  new _hwController();
+var hwController = new _hwController();
 var monitor = new _monitor();
 var settings = new _settings();
 var simulator = new _simulator();
@@ -41,32 +41,32 @@ hwController.buildHWComponentList();
 // Routes / GUI Controller
 
 app.route('/temp')
-  .get(function (req, res){
+  .get(function (req, res) {
     var toReturn = hwController.getReadingsByType("Temp-Sensor");
     res.send(toReturn);
     return;
   })
 
 app.route('/allReadings')
-  .get(function (req, res){
+  .get(function (req, res) {
     var toReturn = monitor.getMonitorReadings();
     res.send(toReturn);
     return;
   });
 
 app.route('/settings/:id')
-  .post(function(req, res){
+  .post(function (req, res) {
     var status = {
       "status": "Error"
     };
-    if (!req.params.id && !req.query.value){
+    if (!req.params.id && !req.query.value) {
       status['status'] = "Error: Please enter type and value";
       res.send(status);
       return;
     }
     var settingId = req.params.id;
     var value = Number(req.query.value);
-    if (!value){
+    if (!value) {
       status['status'] = "Error: Please enter a valid value";
       res.send(status);
       return;
@@ -78,7 +78,7 @@ app.route('/settings/:id')
   });
 
 app.route('/settings')
-  .get(function(req, res){
+  .get(function (req, res) {
     var curSettings = settings.getSettings();
     res.send(curSettings);
   });
@@ -90,20 +90,32 @@ console.log('Climate Control RESTful API server started on: ' + port);
 
 run();
 
-function updateSystem(){
+function updateSystem() {
   // main system loop
   hwController.setReadingsById(settings.bypassOptimizerSettings());
   monitor.updateHWReadings(hwController.getReadings());
   monitor.monitor();
+<<<<<<< HEAD
   //optimizer.updateSettings(settings.getSettings());
   //optimizer.updateReadings(monitor.getMonitorReadings());
   //optimizer.optimize();
   simulator.updateHWReadings(monitor.getMonitorReadings());
   simulator.updateSimulation();
   hwController.simSetReadings(simulator.getValuesToChange());
+=======
+  optimizer.updateSettings(settings.getSettings());
+  optimizer.getMonitorReadings(monitor.getMonitorReadings());
+  optimizer.optimize();
+  hwController.setReadingsById(optimizer.getValuesToChange());
+  console.log('Monitor Readings')
+  console.log('-----')
+  console.log(hwController.getReadingById("zone_heater_0"));
+  console.log(hwController.getReadingById("zone_heater_1"));
+  console.log(hwController.getReadingById("zone_heater_2"));
+>>>>>>> 818c1f11d7cea1aa2077cfd139735c513969fe89
 
 }
 
-function run(){
+function run() {
   setInterval(updateSystem, 1000);
 }
