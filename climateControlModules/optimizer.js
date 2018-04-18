@@ -24,23 +24,23 @@ class optimizer {
 
   constructor() {
     this.defaultSettings = {
-      "fan_zone_0": 200,
-      "fan_zone_1": 200,
-      "fan_zone_2": 200,
-      "temp_zone_0": 20,
-      "temp_zone_1": 20,
-      "temp_zone_2": 20,
-      "co2_zone_0": 200,
-      "co2_zone_1": 200,
-      "co2_zone_2": 200,
-      "damper_in": 50,
-      "damper_recycle": 50,
-      "damper_out": 50,
-      "temp_vent": 20,
+      "fan_zone_0": 0,
+      "fan_zone_1": 0,
+      "fan_zone_2": 0,
+      "temp_zone_0": 0,
+      "temp_zone_1": 0,
+      "temp_zone_2": 0,
+      "co2_zone_0": 0,
+      "co2_zone_1": 0,
+      "co2_zone_2": 0,
+      "damper_in": 0,
+      "damper_recycle": 0,
+      "damper_out": 0,
+      "temp_vent": 0,
       "coil_heat": 0,
       "coil_cool": 0,
-      "humidity_level": 30,
-      "pressure_boiler": 60
+      "humidity_level": 0,
+      "pressure_boiler": 0
     }
     this.readings = [];
     this.settings = {};
@@ -60,10 +60,10 @@ class optimizer {
     var values = Object.values(this.defaultSettings);
     var names = Object.keys(this.defaultSettings);
     var updatedSettings = Object.values(this.settings)
-    console.log(updatedSettings);
-
-    console.log(values);
-    console.log('-----------')
+    // console.log(updatedSettings);
+    //
+    // console.log(values);
+    // console.log('-----------')
     for (var i = 0; i < values.length; i++) {
       // console.log(values[i])
       // console.log('--------------')
@@ -75,7 +75,6 @@ class optimizer {
         //console.log(id);
         if (id === "temp_zone_0") {
           //change the zone_heater_0
-          console.log('HIIIIIIII!!!!!')
           var jsonObj = {
             "id": "zone_heater_0",
             "reading": updatedSettings[i]
@@ -103,7 +102,6 @@ class optimizer {
 
       }
     }
-    console.log(this.valuesToChange);
   }
 
 
@@ -113,7 +111,6 @@ class optimizer {
   }
 
   getValuesToChange() {
-    console.log(this.valuesToChange)
     return this.valuesToChange;
   }
 
@@ -166,4 +163,3 @@ module.exports = optimizer;
   // function getValuesToChange(){
   //   returns this.valuesToChange;
   // }
-

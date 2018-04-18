@@ -7,9 +7,9 @@ class Settings {
       "temp_zone_0": 20,
       "temp_zone_1": 20,
       "temp_zone_2": 20,
-      "co2_zone_0": 200,
-      "co2_zone_1": 200,
-      "co2_zone_2": 200,
+      "co2_zone_0": 750,
+      "co2_zone_1": 750,
+      "co2_zone_2": 750,
       "damper_in": 50,
       "damper_recycle": 50,
       "damper_out": 50,
@@ -20,12 +20,15 @@ class Settings {
       "pressure_boiler": 60
     };
 
+
+
     this.validTypes = ["fan", "damper", "temp", "co2", "humidity", "pressure"];
   }
 
   getSettings() {
     return this.settingsJSON;
   }
+<<<<<<< HEAD
   /*
     updateSettings(id, value){
       var status = "Error";
@@ -55,6 +58,39 @@ class Settings {
         }
       } else {
         status = "Invalid Setting ID";
+=======
+
+  // bypassOptimizerSettings(){
+  //
+  //   return toReturn;
+  // }
+/*
+  updateSettings(id, value){
+    var status = "Error";
+    var settingType = id.split("_")[0];
+    if (this.settingsJSON.hasOwnProperty(id)) {
+      if (settingType === "temp" && value > 0 && value < 50){
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "co2" && value > 0 && value < 800){
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "humidity" && value > 10 && value < 80){
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "pressure" && value > 20 && value < 100){
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "fan" && value > 0 && value < 400) {
+        this.settingsJSON[id] = value;
+        status = "OK";
+      } else if (settingType === "damper" && value > 0 && value < 100) {
+        this.settingsJSON[id] = value;
+        status = "OK";
+      }
+      else {
+        status = "Invalid setting value";
+>>>>>>> 62bde814216b5b69f73136518e279085431187ba
       }
   
       return status;

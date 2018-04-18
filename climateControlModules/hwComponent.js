@@ -4,7 +4,7 @@ class hwComponent{
     this.zone = zone;
     this.type = type;
     this.id = id;
-    this.reading = 15;
+    this.reading = 0;
     this.power = false;
   }
 
