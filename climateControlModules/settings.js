@@ -28,7 +28,7 @@ class Settings {
   getSettings() {
     return this.settingsJSON;
   }
-<<<<<<< HEAD
+
   /*
     updateSettings(id, value){
       var status = "Error";
@@ -92,7 +92,7 @@ class Settings {
         status = "Invalid setting value";
 >>>>>>> 62bde814216b5b69f73136518e279085431187ba
       }
-  
+
       return status;
     }
     */

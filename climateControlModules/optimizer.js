@@ -45,6 +45,7 @@ class optimizer {
     this.readings = [];
     this.settings = {};
     this.valuesToChange = [];
+    this.co2readings = [];
   }
 
 
@@ -102,6 +103,9 @@ class optimizer {
 
       }
     }
+
+    //co2 part
+    console.log(this.co2readings);
   }
 
 
@@ -112,6 +116,10 @@ class optimizer {
 
   getValuesToChange() {
     return this.valuesToChange;
+  }
+
+  getCO2readings(readings) {
+    this.co2readings = readings
   }
 
 }

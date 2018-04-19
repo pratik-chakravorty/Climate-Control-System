@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3000;
 
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -31,11 +31,8 @@ var settings = new _settings();
 var simulator = new _simulator();
 
 var optimizer = new _optimizer();
-<<<<<<< HEAD
-
-=======
 // var optimizer = new _optimizer();
->>>>>>> 62bde814216b5b69f73136518e279085431187ba
+
 
 
 hwController.buildHWComponentList();
@@ -108,6 +105,7 @@ function updateSystem() {
   var values = optimizer.getValuesToChange();
   console.log(values);
   hwController.setReadingsById(values);
+  optimizer.getCO2readings(getReadingsByType("CO2-Sensor"))
   // console.log('Monitor Readings')
   // console.log('-----')
   // console.log(hwController.getReadingById("zone_heater_0"));
@@ -117,5 +115,5 @@ function updateSystem() {
 }
 
 function run() {
-  setInterval(updateSystem, 5000);
+  setInterval(updateSystem, 1000);
 }
